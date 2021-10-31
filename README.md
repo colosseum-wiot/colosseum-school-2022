@@ -25,36 +25,7 @@ After the initial overview of Colosseum, attendees will be guided to the usage o
 
 
 ## Agenda
-### Day 1
-| Time        | Topic                                                            |
-| :---------- | :--------------------------------------------------------------- |
-| 9 - 10am    | Introduction and Use Cases                                       |
-| 10 - 11am   | Colosseum Architecture and Emulation System                      |
-| 11am - 12pm | First Time Users – Quick Start Guide                             |
-| 12 - 1pm    | <strong>Lunch Break</strong>                                     |
-| 1 - 2pm     | Invited Speaker Seminar                                          |
-| 2 - 3pm     | Hands-on: [Wi-Fi assignment](wifi-assignment/wifi-assignment.md) |
-
-### Day 2
-| Time        | Topic                                                                       |
-| :---------- | :-------------------------------------------------------------------------- |
-| 9 - 10am    | Colosseum Emulation Scenarios                                               |
-| 10 - 11am   | LXC Containers (background) and File Proxy Server                           |
-| 11am - 12pm | Interactive Emulations in Colosseum                                         |
-| 12 - 1pm    | Lunch Break                                                                 |
-| 1 - 2pm     | Invited Speaker Seminar                                                     |
-| 2 - 3pm     | Hands-on: [Cellular assignment](cellular-assignment/cellular-assignment.md) |
-
-### Day 3
-| Time         | Topic                                       |
-| :----------- | :------------------------------------------ |
-| 9 - 10am     | Meet at ISEC to Travel to Burlington Campus |
-| 10 - 10.30am | Site Visit to Colosseum                     |
-| 10.30 - 11am | Colosseum Evolution                         |
-| 11am - 12pm  | Batch Jobs for Extended Offline Emulations  |
-| 12 - 1pm     | Lunch Break                                 |
-| 1 - 2pm      | Review and Q&A                              |
-| 2 - 3pm      | Travel Back to Boston Campus                |
+The agenda for the Colosseum Master Class can be found [here](https://www.northeastern.edu/colosseum/master-class2021/).
 
 
 ## Requirements for the attendees
