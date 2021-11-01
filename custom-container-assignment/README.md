@@ -9,6 +9,12 @@ In this assignment, we will first customize a container by adding a GUI for [gnu
 - Students are able to successfully access to Colosseum resources ([Accessing Colosseum Resources](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253362-accessing-colosseum-resources)), e.g., log in to the SSH gateway and file-proxy servers.
 - Students are assigned to the Colosseum team “_gladiators_”.
 - A Linux environment (E.g., ubuntu) with LXC installed (it should have been done as a class pre-requisite).
+- In case LXD/LXC are not installed, on Ubuntu Linux:
+    - `sudo apt-get update`
+    - `sudo apt install lxd`
+    - if installing through snap or recent versions on Ubuntu: `sudo snap start lxd`
+    - `sudo ldconfig`
+    - logout and login again
 
 
 ## Container Customization
