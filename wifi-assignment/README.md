@@ -35,7 +35,8 @@ If the RF emulator is set appropriately as explained in the previous section, th
 The results should look similar to: <br /><br /> ![UHD tone example](images/uhd-tone-example.png)
 
 2. Hit `Ctrl+C` in both terminals to stop the `uhd_tx_tone.sh` and `uhd_rx_fft.sh` example scripts.
-3. Optional: edit `uhd_tx_tone.sh` file to change the center frequency to 0.9 GHz.
+3. Optional: edit `uhd_tx_tone.sh` file to change the center frequency to 0.99 GHz.
+4. Optional: edit `uhd_tx_tone.sh` file to change the center frequency to 0.9 GHz.
 Repeat Step 1 and compare the results.
 
 
