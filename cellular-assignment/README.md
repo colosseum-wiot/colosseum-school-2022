@@ -24,7 +24,7 @@ Scenario Start Time is 22:30:45
 
 1. Configure the base station:
     - Configure the RF parameters of the base station to match the following parameters. Downlink (DL) and uplink (UL) transmission frequencies need to be compatible with the Colosseum scenario in use.
-    - `vim /root/radio_code/srslte_config/ue.conf`:<br/><br/>
+    - `vim /root/radio_code/srslte_config/enb.conf`:<br/><br/>
 
     ```
     [rf]
