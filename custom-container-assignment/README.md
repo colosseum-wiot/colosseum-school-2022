@@ -14,7 +14,7 @@ In this assignment, we will first customize a container by adding a GUI for [gnu
     - `sudo apt install lxd`
     - if installing through snap or recent versions on Ubuntu: `sudo snap start lxd`
     - `sudo ldconfig`
-    - logout and login again
+    - logout and login again (e.g. by closing and reopening the terminal)
 
 
 ## Container Customization
