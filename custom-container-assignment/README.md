@@ -75,7 +75,7 @@ In this assignment, we will first customize a container by adding a GUI for [gnu
 (see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)): `ssh -Y <srn-hostname>` <br />
    **Note 1**: You need to setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information).<br />
    **Note 2**: The -Y flag allows the use of GUI applications.<br />
-   **Note 3**: The password is the one you have set on step 6 of the previous part.
+   **Note 3**: The password is the one you have set on step 6 of the previous Container Customization part.
 
 4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)): `colosseumcli rf start 1009 -c`. When the scenario starts, an output similar to the following is returned (time is in UTC):
     ```
