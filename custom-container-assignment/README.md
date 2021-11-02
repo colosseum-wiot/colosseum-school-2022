@@ -28,7 +28,7 @@ In this assignment, we will first customize a container by adding a GUI for [gnu
     ```
    - By using the following command you can open the files and edit them if they are missing the above lines: `sudo gedit /etc/subuid /etc/subgid`
    - This step ensures your user has the required privileges to use lxc.
-   - Ensure the LXD service is running: `sudo systemctl start lxd`
+   - Ensure the LXD service is running: `sudo systemctl start lxd` or `sudo snap start lxd`
 
 3. Import the archived image in lxc: `lxc image import base-2104.tar.gz --alias base` <br /> The archived images cannot be readily used by lxc, and they need to be loaded in the system. You can check the available loaded images typing: `lxc image list`
 
