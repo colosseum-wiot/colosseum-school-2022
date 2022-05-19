@@ -1,5 +1,5 @@
-# Colosseum Master Class 2021
-### November 1-3, 2021
+# Colosseum Master Class 2022
+### June 6-8, 2022
 
 <p align="middle">
   <img src="images/colosseum-1.jpg" width="49%" /> 
