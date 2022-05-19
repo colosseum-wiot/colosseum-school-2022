@@ -25,7 +25,7 @@ After the initial overview of Colosseum, attendees will be guided to the usage o
 
 
 ## Agenda
-The agenda for the Colosseum Master Class can be found [here](https://www.northeastern.edu/colosseum/master-class2021/).
+The agenda for the Colosseum Master Class can be found [here](https://www.younggladiators.net/).
 
 
 ## Requirements for the attendees
