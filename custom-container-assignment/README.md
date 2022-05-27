@@ -1,17 +1,17 @@
 # Custom Container Assignment
 
-In this assignment, we will first create a custom lxc container by adding a Graphical User Interface (GUI) for [gnuradio](https://www.gnuradio.org/), then we will upload and use this container in an interactive reservation to stream samples from a USRP device, acting as a transmitter to another USRP device, acting as a receiver.
+In this assignment, we will first create a custom LXC container by adding a Graphical User Interface (GUI) for [GNU Radio](https://www.gnuradio.org/), then we will upload and use this container in an interactive reservation to stream samples from a USRP device acting as transmitter to another USRP device acting as receiver.
 
 ## Pre-requisites
 
-- A Linux OS (e.g., Ubuntu) with [Colossum VPN](https://colosseumneu.freshdesk.com/support/solutions/articles/61000285824-cisco-anyconnect-remote-vpn-access) and LXC installed. If you are using the vm provided by the Colosseum team these steps are already covered and you just need to setup your identity.
-- Students have set up their ssh keys ([Upload SSH Public Keys](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253402-upload-ssh-public-keys)) and ssh proxy ([SSH Proxy Setup](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253369-ssh-proxy-setup)).
-- Students are able to successfully access to Colosseum resources ([Accessing Colosseum Resources](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253362-accessing-colosseum-resources)), e.g., log in to the SSH gateway and file-proxy servers.
-- Students are assigned to the Colosseum team “_gladiators_”.
+- A Linux OS (e.g., Ubuntu) with [Colossum VPN](https://colosseumneu.freshdesk.com/support/solutions/articles/61000285824-cisco-anyconnect-remote-vpn-access) and LXC installed. If you are using the virtual machine provided by the Colosseum team, these steps are already covered and you just need to setup your identity.
+- Students have set up their SSH keys ([Upload SSH Public Keys](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253402-upload-ssh-public-keys)) and SSH file-proxy ([SSH Proxy Setup](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253369-ssh-proxy-setup)).
+- Students are able to successfully access to Colosseum resources ([Accessing Colosseum Resources](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253362-accessing-colosseum-resources)), e.g., log into the SSH gateway and file-proxy servers.
+- Students are assigned to the Colosseum team `gladiators`. (Even if you have already a Colosseum account, please use the accounts that has been created for you for the Colosseum school.)
 
 ## Container Customization
 
-1. Open a terminal in your Linux OS, and use the following command to transfer the base image from the File Proxy server to a local folder:
+1. Open a terminal in your Linux OS, and use the following command to transfer the base image from the file-proxy server to a local folder:
 
     ```bash
     rsync -vP -e ssh file-proxy:/share/nas/gladiators/images/base-2104.tar.gz ./
@@ -19,15 +19,15 @@ In this assignment, we will first create a custom lxc container by adding a Grap
 
     This will establish a communication over the network and download a container archived image.
 
-2. Ensure your user has the required privileges to use lxc. To check that, lool for the following lines in the files `/etc/subuid` and `/etc/subgid`
+2. Ensure your user has the required privileges to use LXC. To check that, look for the following lines in the files `/etc/subuid` and `/etc/subgid`
 
     ```config
     lxd:100000:65536
     root:100000:65536
     ```
 
-   - If such lines are missing use your preferred text editor to write the above lines (e.g. `sudo gedit /etc/subuid /etc/subgid`).
-   - Remember to restart the LXD service after this change: `sudo systemctl restart lxd` or `sudo snap restart lxd`.
+   - If such lines are missing, use your preferred text editor to write them (e.g., `sudo gedit /etc/subuid /etc/subgid`).
+   - Remember to restart the LXD service after this change: `sudo systemctl restart lxd`, `sudo snap restart lxd`, or `sudo service lxd restart`.
 
 3. Import the archived image in lxc:
 
@@ -35,68 +35,71 @@ In this assignment, we will first create a custom lxc container by adding a Grap
     lxc image import base-2104.tar.gz --alias base 
     ```
 
-    The outcome of this operation can be also confirmed with the command `lxc image list`.
+    The outcome of this operation can be also confirmed with the command `lxc image list`, which should show the new image.
 
 4. Initialize and launch the container:
 
     ```bash
-    lxc init local:base my-cont
-    lxc start my-cont
+    lxc init local:base my-container
+    lxc start my-container
     ```
 
-    Containers are _running instances of images_. They share all the contents in terms of files and folders of an image, but they can also be modified and their executables can be run. By starting _my-cont_ from the _base_ image we can prepare our software starting from `base-2104` (avoiding to start from scratch) and later commit it in another image which can be treated as an immutable snapshot of the container.
+    Containers are _running instances of images_.
+    They share all the contents in terms of files and folders of an image but they can also be modified and their executables can be run.
+    By starting the container `my-container` from the `base` image, we can prepare our software starting from the imported `base-2104` archive (avoiding to start from scratch), and later commit it (i.e., save it) in another image which can be treated as an immutable snapshot of the container.
 
 5. To access and make any change in the running container we type the command:
 
     ```bash
-    lxc exec my-cont /bin/bash
+    lxc exec my-container /bin/bash
     ```
 
-    The above command launches a process (the bash command shell) inside the container _my-cont_. This action is the equivalent of opening a terminal in a Linux OS or login into a remote Linux server.
+    The above command launches a process (the bash command shell) inside the container `my-container`.
+    This action is the equivalent of opening a terminal in a Linux OS or logging into a remote Linux server.
 
-6. Before starting the customization of the container, you can start by choosing a new password typing the following command in the container shell: `passwd`
-    This will be important later on, when you start your reservation on Colosseum and you are prompted with the password for the container. If you don't want to use a password, you can set up an SSH Private-Public Key access. However, this procedure will not be covered in this tutorial.
+6. Before starting the customization of the container, you can start by choosing a new password typing the following command in the container terminal: `passwd`
+    Please write down the password you choose. This will be important later on, when you start your reservation on Colosseum and you are prompted with the password for the container. Alternatively, you can set up an SSH Private-Public Key access. However, this procedure will not be covered in this tutorial.
 
-7. The process of installing mainstream software is the same of any Ubuntu machine. For this assignment, we install the gnuradio-companion package:
+7. The process of installing mainstream software is the same of any Ubuntu machine. For this assignment, we install the `gnuradio-companion` package:
 
     ```bash
     apt update
-    apt install gnuradio gir1.2-gtk-3.0
+    apt install -y gnuradio gir1.2-gtk-3.0
     ```
 
-    This will install Gnuradio-companion, which is a GUI for [gnuradio](https://www.gnuradio.org/) and allows the visual composition of signal processing chains. It can readily be used for experiments on Colosseum.
+    This will install `gnuradio-companion`, which is a GUI for [GNU Radio](https://www.gnuradio.org/), and allows the visual composition of signal processing workflows. It can readily be used for experiments on Colosseum.
 
-8. We are ready to commit our changes and stop the container:
+8. Now, we are ready to commit our changes and stop the container:
 
     ```bash
-    exit # termination of the bash shell in the container
-    lxc stop my-cont # stop of the container
-    lxc publish my-cont --alias my_image # creation of a new image
-    lxc image list # check that the image my_image has been correctly created
+    exit  # terminate of the bash shell in the container
+    lxc stop my-container  # stop of the container
+    lxc publish my-container --alias my_image  # creation of a new image called my_image
+    lxc image list  # check that the image my_image has been correctly created
     ```
 
-   Stopping the container terminates the processes running from its executables and editing its files; it is an important step for avoiding data inconsistency while publishing (committing) the changes. The publishing takes a snapshot of the container and saves it in a new image.
+   Stopping the container terminates the processes running from its executables and editing its files; it is an important step to avoid data inconsistency while publishing (committing) the changes. The publishing makes a snapshot of the container and saves it in a new image.
 
-9. Export the updated image in an archive: `lxc image export my_image <insert_your_surname>`. This step is required to handle and transfer an image.
+9. Export the updated image in an archive: `lxc image export my_image insert_your_last_name`. This step is required to handle and transfer an image. (Please, in the above, replace `insert_your_last_name` with your last name.)
 
 10. Upload your newly archived image to Colosseum servers:
 
 ```bash
-rsync -vP -e ssh <your_surname>.tar.gz file-proxy:/share/nas/gladiators/images/
+rsync -vP -e ssh <insert_your_last_name>.tar.gz file-proxy:/share/nas/gladiators/images/
 ```
 
-Colosseum presents to its users the available containers image present in the related team folder. By transferring the archived image in the folder indicated above you are making it available to all users in your team for starting a Colosseum reservation and experiment.
+Colosseum presents to its users the available containers images in the related team folder. By transferring the archived image in the folder indicated above, you are making it available to all the users of your team.
 
 ## Experimenting with your custom container
 
 1. Login to [Colosseum website](https://experiments.colosseum.net).
 
-2. Make a reservation with the **<your_surname>** image for two SRNs (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). Call the reservation in a meaningful way (e.g., your name). Two hours should suffice.
+2. Make a reservation with the `insert_your_last_name` image created in the previous step. The reservation should have two SRNs (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). Call the reservation in a meaningful way (e.g., your name). Two hours should suffice.
 
 3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes. At your scheduled reservation time, **open two terminals** and ssh into the assigned Colosseum SRNs (see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)):
 
 ```bash
-ssh -Y <srn-hostname> # <srn-hostname> is usually <team-name>-<srn-id>. For this school gladiators-<srn-id>
+ssh -Y <srn-hostname> # <srn-hostname> is usually <team-name>-<srn-id>.  # for this class gladiators-<srn-id>
 ```
 
 Please note that: this command will not work if you have not setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information). Moreover, the `-Y` flag allows the use of GUI applications. Some old `ssh` versions may still use the `-X` flag for the same purpose, thus if you are not able to see any graphical output after the step 6 of this section, logout and login again with the command `ssh <srn-hostname> -X`. Finally, the password is the one you have set on step 6 of the previous Container Customization section.
@@ -104,10 +107,15 @@ Please note that: this command will not work if you have not setup your ssh conf
 
 ```bash
 colosseumcli rf start 1009 -c
+```
+
+You should receive an output similar to
+
+```
 Scenario Start Time is 22:30:45
 ```
 
- This will engage the Colosseum RF Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
+This will engage the Colosseum Massive Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment, we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
 5. In both terminals, update the FPGA firmware `./flash_fpga_x310.sh`. This step ensures the correct firmware is present in the Software Defined Radios by flashing its bitfile.
 6. In both terminals, execute the following command to open the GUI (ignore any warnings that might pop up): `gnuradio-companion`. We will use one node as transmitter and the other one as receiver.
 
