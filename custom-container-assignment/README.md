@@ -105,15 +105,15 @@ Colosseum presents to its users the available containers images in the related t
 Please note that: this command will not work if you have not setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information). Moreover, the `-Y` flag allows the use of GUI applications. Some old `ssh` versions may still use the `-X` flag for the same purpose, thus if you are not able to see any graphical output after the step 6 of this section, logout and login again with the command `ssh <srn-hostname> -X`. Finally, the password is the one you have set on step 6 of the previous Container Customization section.
 4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)). When the scenario starts, an output similar to the following is returned (time is in UTC):
 
-    ```bash
-    colosseumcli rf start 1009 -c
-    ```
+```bash
+colosseumcli rf start 1009 -c
+```
 
-    You should receive an output similar to
+You should receive an output similar to
 
-    ```
-    Scenario Start Time is 22:30:45
-    ```
+```bash
+Scenario Start Time is 22:30:45
+```
 
 This will engage the Colosseum Massive Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment, we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
 5. In both terminals, update the FPGA firmware `./flash_fpga_x310.sh`. This step ensures the correct firmware is present in the Software Defined Radios by flashing its bitfile.
@@ -122,19 +122,24 @@ This will engage the Colosseum Massive Channel Emulator and make the necessary c
 ### Transmitter GUI
 
 1. Create the following graph with blocks: _Signal Source_, _Throttle_, and _UHD: USRP Sink_ (you can search for a block through the lent icon).
-        ![Transmitter Graph](images/transmitter.png)
+
+![Transmitter Graph](images/transmitter.png)
 
 2. Double-click on the _Options_ block to open the block settings and specify the _Id_ to “something”. Some blocks do not support Python, meaning that the code GNU Radio is going to create cannot be written in such language. In these case, you can set here "C++" as the output language.
-        ![Transmitter Options](images/transmitter_options.png)
+
+![Transmitter Options](images/transmitter_options.png)
 
 3. Double-click on the _Variable_ block and specify a sampling rate value of 1 MHz (1000000).
-        ![Transmitter Variable](images/transmitter_variable.png)
+
+![Transmitter Variable](images/transmitter_variable.png)
 
 4. Double-click on the _Signal Source_ and specify a Triangle waveform.
-        ![Transmitter Signal Source](images/transmitter_signal_source.png)
+
+![Transmitter Signal Source](images/transmitter_signal_source.png)
 
 5. Double-click on the _UHD: USRP Sink_ block and in the RF Options tab specify a central frequency of 1 GHz (1000000000) and a Channel Gain Value of 100.
-        ![Transmitter USRP Sink](images/transmitter_usrp_sink.png)
+
+![Transmitter USRP Sink](images/transmitter_usrp_sink.png)
 
 ### Receiver GUI
 
