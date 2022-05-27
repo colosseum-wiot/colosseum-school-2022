@@ -123,42 +123,69 @@ This will engage the Colosseum Massive Channel Emulator and make the necessary c
 
 1. Create the following graph with blocks: _Signal Source_, _Throttle_, and _UHD: USRP Sink_ (you can search for a block through the lent icon).
 
-![Transmitter Graph](images/transmitter.png)
+<p align="center">
+  <img src="images/transmitter.png" />
+</p>
 
 2. Double-click on the _Options_ block to open the block settings and specify the _Id_ to “something”. Some blocks do not support Python, meaning that the code GNU Radio is going to create cannot be written in such language. In these case, you can set here "C++" as the output language.
 
-![Transmitter Options](images/transmitter_options.png)
+<p align="center">
+  <img src="images/transmitter_options.png" />
+</p>
+
 
 3. Double-click on the _Variable_ block and specify a sampling rate value of 1 MHz (1000000).
 
-![Transmitter Variable](images/transmitter_variable.png)
+<p align="center">
+  <img src="images/transmitter_variable.png" />
+</p>
 
 4. Double-click on the _Signal Source_ and specify a Triangle waveform.
 
-![Transmitter Signal Source](images/transmitter_signal_source.png)
+<p align="center">
+  <img src="images/transmitter_signal_source.png" />
+</p>
 
 5. Double-click on the _UHD: USRP Sink_ block and in the RF Options tab specify a central frequency of 1 GHz (1000000000) and a Channel Gain Value of 100.
 
-![Transmitter USRP Sink](images/transmitter_usrp_sink.png)
+<p align="center">
+  <img src="images/transmitter_usrp_sink.png" />
+</p>
 
 ### Receiver GUI
 
    1. Create the following graph with blocks: _UHD: USRP Source_ and _QT GUI Time Sink_ (you can search for a block through the lent icon).
-        ![Receiver Graph](images/receiver.png)
+        
+<p align="center">
+    <img src="images/receiver.png" />
+</p>
 
    2. Double-click on the _Options_ block to open the block settings and specify the _Id_ to “something”.
-        ![Receiver Options](images/receiver_options.png)
+
+<p align="center">
+    <img src="images/receiver_options.png" />
+</p>
 
    3. Double-click on the _Variable_ block and specify a sampling rate Value of 1 MHz (1000000).
-        ![Receiver Variable](images/receiver_variable.png)
+
+<p align="center">
+    <img src="images/receiver_variable.png" />
+</p>
 
    4. Double-click on the _USRP Source_ block and in the RF Options tab specify a central frequency of 1 GHz (1000000000) and a Channel Gain Value of 100.
-        ![Receiver USRP Source](images/receiver_usrp_source.png)
+
+<p align="center">
+    <img src="images/receiver_usrp_source.png" />
+</p>
 
 ### Running the experiment
 
 1. To start a system, click on the execute button in the setting bar. You will be prompted to save the sketch somewhere before actually start the processing. Save them and start both the receiver and the transmitter. If everything goes as expected, the output should be similar to this.
-     ![Receiver Options](images/output.gif)
+
+<p align="center">
+    <img src="images/output.gif" />
+</p>
+
 2. To stop the systems, simply close the windows or click the stop button.
 3. Optional: try to change the signal type and the transmission gain and notice any difference that might occur.
 
