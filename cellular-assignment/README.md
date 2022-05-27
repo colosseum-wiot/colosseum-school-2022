@@ -9,7 +9,7 @@ In this assignment, we will use srsLTE (now [srsRAN](https://github.com/srsran/s
 2. Make a reservation with two SRNs with the `srslte-20-04` image (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). Call the reservation in a meaningful way (e.g., your name). Two hours should suffice.
 3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes. At your scheduled reservation time, open four terminals (two for each node). As a convention, the SRN with the lowest ID will be used as a base station; the other SRN as User Equipment (UE). Now, ssh into the assigned Colosseum SRNs[^1]<sup>,</sup>[^2] 
 (see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)): `ssh <srn-hostname>`
-4. In one of the three terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)): `colosseumcli rf start 1009 -c`. When the scenario starts, an output similar to the following is returned (time is in UTC):
+4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)): `colosseumcli rf start 1009 -c`. When the scenario starts, an output similar to the following is returned (time is in UTC):
 
 ```
 Scenario Start Time is 22:30:45
@@ -23,7 +23,7 @@ Scenario Start Time is 22:30:45
 ## Configure the cellular nodes
 
 1. Configure the base station:
-    - Configure the RF parameters of the base station to match the following parameters. Downlink (DL) and uplink (UL) transmission frequencies need to be compatible with the Colosseum scenario in use.
+    - Configure the RF parameters of the base station to match the following parameters by using your favorite text editor (e.g. vim, nano). Downlink (DL) and uplink (UL) transmission frequencies need to be compatible with the Colosseum scenario in use.
     - `vim /root/radio_code/srslte_config/enb.conf`:<br/><br/>
 
     ```

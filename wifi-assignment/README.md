@@ -9,9 +9,8 @@ In this assignment, we will use a GNU Radio [IEEE 802.11 a/g/p transceiver](http
 2. Make a reservation with two SRNs with the `webinar-interactive-v1` image (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)).
 Call the reservation in a meaningful way (e.g., your name). Two hours should suffice.
 3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes.
-At your scheduled reservation time, open two terminals and ssh into the assigned Colosseum SRNs[^1]<sup>,</sup>[^2]
-(see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)): `ssh <srn-hostname>`
-4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)): `colosseumcli rf start 1009 -c`.
+At your scheduled reservation time, open two terminals and ssh into the assigned Colosseum SRNs[^1]<sup>,</sup>[^2]: `ssh <srn-hostname>` (see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)). The password for this image is `sunflower`.
+4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli) for more information on this API): `colosseumcli rf start 1009 -c`.
 When the scenario starts, an output similar to the following is returned (time is in UTC):
   ```
   Scenario Start Time is 22:30:45
@@ -42,7 +41,7 @@ Repeat Step 1 and compare the results.
 
 ## Start the Wi-Fi nodes
 
-1. For each SRN, cd to the `/root/interactive_scripts` directory and execute the `tap_setup.sh` script to setup a tap interface for the SRN (see [Traffic Generation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253508-traffic-generation) for more information on routing traffic in Colosseum): `/root/interactive_scripts/tap_setup.sh`
+1. For each SRN, navigate to the following directory `cd /root/interactive_scripts` and execute the `tap_setup.sh` script to setup a tap interface for the SRN (see [Traffic Generation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253508-traffic-generation) for more information on routing traffic in Colosseum): `/root/interactive_scripts/tap_setup.sh`
 2. For each SRN, execute the `route_setup.sh` file (located in the `/root/interactive_scripts` directory) to setup the routing tables: `/root/interactive_scripts/route_setup.sh <ID of the other SRN>`.
 In each of the SRN, you need to setup the route to the other SRN. The SRN IDs are created by adding 100 to the SRN number assigned to your reservation. As an example, SRN-015 will have ID 115, hence the `tr0` IP address of this node will be 192.168.115.1. In this example, the above command becomes: `/root/interactive_scripts/route_setup.sh 115`.
 3. In each SRN, execute the `modem_start.sh` script to start the Wi-Fi modem: `/root/interactive_scripts/modem_start.sh`.
