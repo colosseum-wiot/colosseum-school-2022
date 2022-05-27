@@ -84,9 +84,9 @@ In this assignment, we will first create a custom LXC container by adding a Grap
 
 10. Upload your newly archived image to Colosseum servers:
 
-```bash
-rsync -vP -e ssh <insert_your_last_name>.tar.gz file-proxy:/share/nas/gladiators/images/
-```
+    ```bash
+    rsync -vP -e ssh <insert_your_last_name>.tar.gz file-proxy:/share/nas/gladiators/images/
+    ```
 
 Colosseum presents to its users the available containers images in the related team folder. By transferring the archived image in the folder indicated above, you are making it available to all the users of your team.
 
@@ -98,22 +98,22 @@ Colosseum presents to its users the available containers images in the related t
 
 3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes. At your scheduled reservation time, **open two terminals** and ssh into the assigned Colosseum SRNs (see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)):
 
-```bash
-ssh -Y <srn-hostname> # <srn-hostname> is usually <team-name>-<srn-id>.  # for this class gladiators-<srn-id>
-```
+    ```bash
+    ssh -Y <srn-hostname> # <srn-hostname> is usually <team-name>-<srn-id>.  # for this class gladiators-<srn-id>
+    ```
 
 Please note that: this command will not work if you have not setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information). Moreover, the `-Y` flag allows the use of GUI applications. Some old `ssh` versions may still use the `-X` flag for the same purpose, thus if you are not able to see any graphical output after the step 6 of this section, logout and login again with the command `ssh <srn-hostname> -X`. Finally, the password is the one you have set on step 6 of the previous Container Customization section.
 4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)). When the scenario starts, an output similar to the following is returned (time is in UTC):
 
-```bash
-colosseumcli rf start 1009 -c
-```
+    ```bash
+    colosseumcli rf start 1009 -c
+    ```
 
-You should receive an output similar to
+    You should receive an output similar to
 
-```
-Scenario Start Time is 22:30:45
-```
+    ```
+    Scenario Start Time is 22:30:45
+    ```
 
 This will engage the Colosseum Massive Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment, we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
 5. In both terminals, update the FPGA firmware `./flash_fpga_x310.sh`. This step ensures the correct firmware is present in the Software Defined Radios by flashing its bitfile.
@@ -123,12 +123,16 @@ This will engage the Colosseum Massive Channel Emulator and make the necessary c
 
 1. Create the following graph with blocks: _Signal Source_, _Throttle_, and _UHD: USRP Sink_ (you can search for a block through the lent icon).
         ![Transmitter Graph](images/transmitter.png)
+
 2. Double-click on the _Options_ block to open the block settings and specify the _Id_ to “something”. Some blocks do not support Python, meaning that the code GNU Radio is going to create cannot be written in such language. In these case, you can set here "C++" as the output language.
         ![Transmitter Options](images/transmitter_options.png)
+
 3. Double-click on the _Variable_ block and specify a sampling rate value of 1 MHz (1000000).
         ![Transmitter Variable](images/transmitter_variable.png)
+
 4. Double-click on the _Signal Source_ and specify a Triangle waveform.
         ![Transmitter Signal Source](images/transmitter_signal_source.png)
+
 5. Double-click on the _UHD: USRP Sink_ block and in the RF Options tab specify a central frequency of 1 GHz (1000000000) and a Channel Gain Value of 100.
         ![Transmitter USRP Sink](images/transmitter_usrp_sink.png)
 
@@ -136,10 +140,13 @@ This will engage the Colosseum Massive Channel Emulator and make the necessary c
 
    1. Create the following graph with blocks: _UHD: USRP Source_ and _QT GUI Time Sink_ (you can search for a block through the lent icon).
         ![Receiver Graph](images/receiver.png)
+
    2. Double-click on the _Options_ block to open the block settings and specify the _Id_ to “something”.
         ![Receiver Options](images/receiver_options.png)
+
    3. Double-click on the _Variable_ block and specify a sampling rate Value of 1 MHz (1000000).
         ![Receiver Variable](images/receiver_variable.png)
+
    4. Double-click on the _USRP Source_ block and in the RF Options tab specify a central frequency of 1 GHz (1000000000) and a Channel Gain Value of 100.
         ![Receiver USRP Source](images/receiver_usrp_source.png)
 
