@@ -102,21 +102,24 @@ Colosseum presents to its users the available containers images in the related t
     ssh -Y <srn-hostname> # <srn-hostname> is usually <team-name>-<srn-id>.  # for this class gladiators-<srn-id>
     ```
 
-Please note that: this command will not work if you have not setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information). Moreover, the `-Y` flag allows the use of GUI applications. Some old `ssh` versions may still use the `-X` flag for the same purpose, thus if you are not able to see any graphical output after the step 6 of this section, logout and login again with the command `ssh <srn-hostname> -X`. Finally, the password is the one you have set on step 6 of the previous Container Customization section.
+    Please note that: this command will not work if you have not setup your ssh config files by following the instructions in SSH Proxy Setup (see the pre-requisites section for more information). Moreover, the `-Y` flag allows the use of GUI applications. Some old `ssh` versions may still use the `-X` flag for the same purpose, thus if you are not able to see any graphical output after the step 6 of this section, logout and login again with the command `ssh <srn-hostname> -X`. Finally, the password is the one you have set on step 6 of the previous Container Customization section.
+
 4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)). When the scenario starts, an output similar to the following is returned (time is in UTC):
 
-```bash
-colosseumcli rf start 1009 -c
-```
+    ```bash
+    colosseumcli rf start 1009 -c
+    ```
 
-You should receive an output similar to
+    You should receive an output similar to
 
-```bash
-Scenario Start Time is 22:30:45
-```
+    ```bash
+    Scenario Start Time is 22:30:45
+    ```
 
-This will engage the Colosseum Massive Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment, we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
+    This will engage the Colosseum Massive Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment, we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`.
+
 5. In both terminals, update the FPGA firmware `./flash_fpga_x310.sh`. This step ensures the correct firmware is present in the Software Defined Radios by flashing its bitfile.
+
 6. In both terminals, execute the following command to open the GUI (ignore any warnings that might pop up): `gnuradio-companion`. We will use one node as transmitter and the other one as receiver.
 
 ### Transmitter GUI
@@ -140,7 +143,7 @@ This will engage the Colosseum Massive Channel Emulator and make the necessary c
   <img src="images/transmitter_variable.png" />
 </p>
 
-4. Double-click on the _Signal Source_ and specify a Triangle waveform.
+4. Double-click on the _Signal Source_ and specify a Triangle waveform and a frequency of 1 MHz (1000000).
 
 <p align="center">
   <img src="images/transmitter_signal_source.png" />
