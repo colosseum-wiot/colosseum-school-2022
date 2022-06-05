@@ -1,4 +1,4 @@
-# Colosseum Master Class 2022
+# Colosseum Young Gladiators 2022
 ### June 6-8, 2022
 
 <p align="middle">
