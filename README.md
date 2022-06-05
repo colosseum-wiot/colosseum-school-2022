@@ -30,9 +30,17 @@ The agenda for the Colosseum Master Class can be found [here](https://www.youngg
 
 ## Requirements for the attendees
 
-- The use of Linux-based systems, which is the operating system of most Colosseum components, is advised for hands-on sessions.
-Familiarity with basic Linux commands and its command line interface (e.g., ssh, scp/rsync) is recommended.
-Basic knowledge of computer networking and wireless concepts is also useful.
-- The attendees are required to bring their own laptop for the hands-on sessions.
-- The attendees are required to setup in advance their ssh keys (see [Upload SSH Public Keys](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253402-upload-ssh-public-keys)) and ssh proxy (see [SSH Proxy Setup](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253369-ssh-proxy-setup))
-- The attendees are required to verify in advance that they are able to successfully access Colosseum portal and resources (see [Accessing Colosseum Resources](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253362-accessing-colosseum-resources)), e.g., log into the ssh gateway and file-proxy servers.
+The course will include some hands-on experiments on Colosseum that require a Linux-based system for the attendees. Just a reminder of some requirements in anticipation of the hands-on exercises. Please be sure they are met before the course starts:
+
+- A Linux-based machine (e.g., Ubuntu) with LXD installed.
+([Instructions](https://linuxcontainers.org/lxd/getting-started-cli/) to install LXD.)
+Alternatively, a machine with [VirtualBox](https://www.virtualbox.org/) or [VMware](https://www.vmware.com/) installed.
+- Familiarity with basic Linux commands and its command-line interface (e.g., `ssh`, `scp`/`rsync`) is required for the course.
+- Basic knowledge of computer networking and wireless concepts is also useful.
+- To be able to accomplish the hands-on experiments, attendees would need a laptop with Internet access.
+- User accounts to access the Colosseum system have been sent to all the attendees. Credentials for the experimental portal, and for the help desk will be sent via email. You should have received two different sets of credentials, be sure to check your spam folder.
+(For appropriate access to all the course contents, we recommend that you use this account during this course, even if you already have another Colosseum account.)
+- Once the Colosseum account has been received, users are expected to go through the following set-up guides before the course:
+    - [Cisco AnyConnect Remote VPN Access](https://colosseumneu.freshdesk.com/support/solutions/articles/61000285824-cisco-anyconnect-remote-vpn-access)
+    - [Accessing Colosseum Resources](https://colosseumneu.freshdesk.com/support/solutions/articles/61000253362-accessing-colosseum-resources)
+    - [Upload SSH Public Keys](https://colosseumneu.freshdesk.com/support/solutions/articles/61000253402-upload-ssh-public-keys)
