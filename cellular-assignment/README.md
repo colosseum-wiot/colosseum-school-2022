@@ -7,8 +7,7 @@ In this assignment, we will use srsLTE (now [srsRAN](https://github.com/srsran/s
 
 1. Connect to Colosseum VPN (instructions [here](https://colosseumneu.freshdesk.com/support/solutions/articles/61000285824-cisco-anyconnect-remote-vpn-access) and login to [Colosseum website](https://experiments.colosseum.net)).
 2. Make a reservation with two SRNs with the `srslte-20-04` image (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). Call the reservation in a meaningful way (e.g., your name). Two hours should suffice.
-3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes. At your scheduled reservation time, open four terminals (two for each node). As a convention, the SRN with the lowest ID will be used as a base station; the other SRN as User Equipment (UE). Now, ssh into the assigned Colosseum SRNs[^1]<sup>,</sup>[^2] 
-(see instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn)): `ssh <srn-hostname>`
+3. In the reservation page, you can find the assigned SRNs/nodes and their hostnames by hovering over nodes. At your scheduled reservation time, open four terminals (two for each node). As a convention, the SRN with the lowest ID will be used as a base station; the other SRN as User Equipment (UE). Now, ssh as `root` user into the assigned Colosseum SRNs:[^1] `ssh root@<srn-hostname>` (The password for the `srslte-20-04` container is `ChangeMe`.[^2])
 4. In one of the terminals, run the following command to start a Colosseum Radio-frequency (RF) scenario through the Colosseum CLI API (see instructions [here](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253397-colosseum-cli)): `colosseumcli rf start 1009 -c`. When the scenario starts, an output similar to the following is returned (time is in UTC):
 
 ```
@@ -17,7 +16,7 @@ Scenario Start Time is 22:30:45
 5. This will engage the Colosseum RF Channel Emulator and make the necessary connections between the USRPs of the reserved nodes based on the parameters set in the specific RF scenario (see the [Scenario Summary List](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000276224-scenarios-summary-list)). In this assignment we will use the [Test Scenario All Paths 0 dB (1009)](https://colosseumneu.freshdesk.com/support/solutions/articles/61000277641-test-scenario-all-paths-0-db-1009). You can check if the RF scenario is active and running by executing the following command: `colosseumcli rf info`
 
 [^1]: You need to setup your ssh config files by following the instructions in [SSH Proxy Setup](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253369-ssh-proxy-setup).
-[^2]: The password for the `srslte-20-04` container is `ChangeMe`.
+[^2]: Instructions on [Logging into an SRN](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253366-logging-into-an-srn).
 
 
 ## Configure the cellular nodes
