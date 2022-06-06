@@ -25,7 +25,7 @@ After the initial overview of Colosseum, attendees will be guided to the usage o
 
 
 ## Agenda
-The agenda for the Colosseum Master Class can be found [here](https://www.younggladiators.net/).
+The agenda for the Colosseum Master Class can be found [here](/agenda.pdf).
 
 
 ## Requirements for the attendees
