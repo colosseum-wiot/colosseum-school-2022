@@ -1,0 +1,32 @@
+# SSH Gateway
+
+Host colosseum-gw
+
+    Hostname gw.colosseum.net
+
+    User <your-colosseum-user-name>
+
+    IdentityFile <path-to-private-key-on-your-local-machine> 
+
+
+# File Proxy Server
+
+Host file-proxy
+
+    Hostname file-proxy
+
+    User <your-colosseum-user-name>
+
+    ProxyCommand ssh -W %h:%p colosseum-gw 
+
+
+# SRNs (User Container)
+
+Host <your-colosseum-team-name>-???
+
+    User root
+
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+    ProxyCommand ssh -W %h:%p colosseum-gw
